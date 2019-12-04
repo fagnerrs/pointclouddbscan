@@ -62,7 +62,7 @@ pointsY = []
 pointsZ = []
 points = vtk.vtkPoints()
 
-with open('assets/carros6_arvores.csv', newline='') as csvfile:
+with open('assets/cruzamento02.csv', newline='') as csvfile:
   spamreader = csv.reader(csvfile, delimiter=',', quotechar=' ')
   for row in spamreader:
 
@@ -84,8 +84,13 @@ points1 = np.array([pointsX, pointsY, pointsZ])
 #})
 
 eps = 0.75
-min_points = 25
+min_points = 10
 classifications = dbscan(points1, eps, min_points)
+
+
+#classPoints = get_class_points(points1, classification, 20)
+
+#plot_bounding_box(classPoints)
 
 plotCloud(points1, classifications)
 
